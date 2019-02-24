@@ -17,14 +17,19 @@ public:
             if(computer.playerWeapon.getWeapon() == weapons::ROCK){
                 user.setTies();
                 computer.setTies();
+                cout<< user.getUsername()<<": "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": TIE"<<endl;
             }
             else if(computer.playerWeapon.getWeapon() == weapons::PAPER){
                 user.setLosses();
                 computer.setWins();
+                cout<< user.getUsername()<<": "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": PAPER WINS"<<endl;
+
             }
             else{
                 user.setWins();
                 computer.setLosses();
+                cout<< user.getUsername()<<": "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": SCISSOR WINS"<<endl;
+
             }
         }
 
@@ -33,14 +38,20 @@ public:
             if(computer.playerWeapon.getWeapon() == weapons::PAPER){
                 user.setTies();
                 computer.setTies();
+                cout<< user.getUsername()<<": "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": TIE"<<endl;
+
             }
             else if(computer.playerWeapon.getWeapon() == weapons::SCISSOR){
                 user.setLosses();
                 computer.setWins();
+                cout<< user.getUsername()<<": "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": SCISSOR WINS"<<endl;
+
             }
             else{
                 user.setWins();
                 computer.setLosses();
+                cout<< user.getUsername()<<": "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": ROCK WINS"<<endl;
+
             }
         }
 
@@ -48,14 +59,20 @@ public:
             if(computer.playerWeapon.getWeapon() == weapons::SCISSOR){
                 user.setTies();
                 computer.setTies();
+                cout<< user.getUsername()<<": "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": TIE"<<endl;
+
             }
             else if(computer.playerWeapon.getWeapon() == weapons::ROCK){
                 user.setLosses();
                 computer.setWins();
+                cout<< user.getUsername()<<": "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": ROCK WINS"<<endl;
+
             }
             else{
                 user.setWins();
                 computer.setLosses();
+                cout<< user.getUsername()<<": "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": PAPER WINS"<<endl;
+
             }
         }
     }

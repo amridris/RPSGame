@@ -6,8 +6,12 @@
 #define RPSGAME_WEAPONS_H
 #include "iostream"
 #include "random"
+#include <time.h>
+#include <stdlib.h>
 
 using namespace std;
+
+
 enum class weapons{
     ROCK = 0,
     PAPER = 1,
@@ -22,6 +26,8 @@ private:
 public:
     Weapons(){
 
+        srand(time(NULL));
+
     }
 
     void setUserWeapon(weapons userChoice) {
@@ -29,7 +35,10 @@ public:
     }
 
     void setComputerWeapon(){
-        int option = 1;
+
+
+        int option = rand()%3 + 1;
+
         switch(option){
             case 1: playerWeapon = weapons::ROCK;
             break;
@@ -44,6 +53,21 @@ public:
 
     weapons  getWeapon(){
         return playerWeapon;
+    }
+
+    string to_string(){
+
+        string weaponName;
+        switch(playerWeapon){
+            case weapons::ROCK: weaponName = "ROCK";
+            break;
+            case weapons::PAPER: weaponName = "PAPER";
+            break;
+            case weapons::SCISSOR: weaponName = "SCISSOR";
+            break;
+        }
+
+        return weaponName;
     }
 
     void printWeaponList() {

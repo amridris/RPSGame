@@ -3,7 +3,7 @@
 int main() {
 
     RPSControl game;
-    game.showMenu();
+    game.play();
 
     return 0;
 }
