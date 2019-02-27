@@ -28,7 +28,7 @@ public:
             else{
                 user.setWins();
                 computer.setLosses();
-                cout<< user.getUsername()<<": "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": SCISSOR WINS"<<endl;
+                cout<< user.getUsername()<<": "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": ROCK WINS"<<endl;
 
             }
         }
@@ -50,7 +50,7 @@ public:
             else{
                 user.setWins();
                 computer.setLosses();
-                cout<< user.getUsername()<<": "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": ROCK WINS"<<endl;
+                cout<< user.getUsername()<<": "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": PAPER WINS"<<endl;
 
             }
         }
@@ -71,7 +71,7 @@ public:
             else{
                 user.setWins();
                 computer.setLosses();
-                cout<< user.getUsername()<<": "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": PAPER WINS"<<endl;
+                cout<< user.getUsername()<<": "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": SCISSORS WINS"<<endl;
 
             }
         }
