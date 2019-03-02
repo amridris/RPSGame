@@ -1,6 +1,8 @@
-//
-// Created by Amer on 2/22/2019.
-//
+/*
+ * Subject: CMPE 135            Professor Ron Mak
+ * Assignment 3: Command Line RPS Game
+ * contributors: Aamer Idris, Jacob Balster-Gee, Dan Hoang, Andre Voloshin
+ */
 
 #ifndef RPSGAME_WEAPONS_H
 #define RPSGAME_WEAPONS_H
@@ -14,30 +16,30 @@ using namespace std;
 
 enum class weapons{
     ROCK = 0,
-    PAPER = 1,
+    PAPER = 1,                  // weapon enum declaration (0->2)
     SCISSOR = 2
 };
 
 class Weapons {
 
 private:
-    weapons playerWeapon;
+    weapons playerWeapon;           // weapon enum member variable
 
 public:
     Weapons(){
 
-        srand(time(NULL));
+        srand(time(NULL));          // seed srand for random choices
 
     }
 
     void setUserWeapon(weapons userChoice) {
-        playerWeapon = userChoice;
+        playerWeapon = userChoice;                  // set weapon
     }
 
     void setComputerWeapon(){
 
 
-        int option = rand()%3 + 1;
+        int option = rand()%3 + 1;                  // random choice from 1-3
 
         switch(option){
             case 1: playerWeapon = weapons::ROCK;
@@ -52,7 +54,7 @@ public:
     };
 
     weapons  getWeapon(){
-        return playerWeapon;
+        return playerWeapon;                // return weapon
     }
 
     string to_string(){
@@ -72,7 +74,7 @@ public:
 
     void printWeaponList() {
 
-        cout << "Choose your weapon:" << endl;
+        cout << "Choose your weapon:" << endl;                      // print weapon to the user to choose
         cout << "1: ROCK" << std::endl;
         cout << "2: PAPER" << endl;
         cout << "3: SCISSOR" << endl;

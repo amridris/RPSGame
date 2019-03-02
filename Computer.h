@@ -1,18 +1,22 @@
-//
-// Created by Amer on 2/22/2019.
-//
-
+/*
+ * Subject: CMPE 135            Professor Ron Mak
+ * Assignment 3: Command Line RPS Game
+ * contributors: Aamer Idris, Jacob Balster-Gee, Dan Hoang, Andre Voloshin
+ */
 #ifndef RPSGAME_COMPUTER_H
 #define RPSGAME_COMPUTER_H
 #include "Player.h"
 using namespace std;
 
+
 class Computer: public Player {
 public:
     Computer(){};
+
+
     void playTurn(){
-        //computer implementation
-        this->playerWeapon.setComputerWeapon();
+
+        this->playerWeapon.setComputerWeapon();                     //Set computer weapon
     }
 };
 

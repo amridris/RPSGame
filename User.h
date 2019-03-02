@@ -1,6 +1,8 @@
-//
-// Created by Amer on 2/22/2019.
-//
+/*
+ * Subject: CMPE 135            Professor Ron Mak
+ * Assignment 3: Command Line RPS Game
+ * contributors: Aamer Idris, Jacob Balster-Gee, Dan Hoang, Andre Voloshin
+ */
 
 #ifndef RPSGAME_USER_H
 #define RPSGAME_USER_H
@@ -17,10 +19,10 @@ private:
 public:
     User(): name(""), userPlay(false){};
 
-    std::string getUsername(){ return name; }
+    std::string getUsername(){ return name; }               //get username
 
     void setUsername(){
-        cout<<"Please enter your name?"<<endl;
+        cout<<"Please enter your name?"<<endl;              // set username using cin
         getline(cin, name);
     }
 
@@ -31,15 +33,15 @@ public:
 
         do {
 
-            playerWeapon.printWeaponList();
+            playerWeapon.printWeaponList();                     // Ask user to choose weapon and check the input value
             cin >> option;
 
-        } while (option < 1 && option > 3);
+        } while (option < 1 || option > 3);
 
 
         switch (option) {
             case 1:
-                playerWeapon.setUserWeapon(weapons::ROCK);
+                playerWeapon.setUserWeapon(weapons::ROCK);          // switch statment to assign user weapon
                 break;
             case 2:
                 playerWeapon.setUserWeapon(weapons::PAPER);

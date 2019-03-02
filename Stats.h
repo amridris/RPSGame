@@ -1,6 +1,8 @@
-//
-// Created by Amer on 2/22/2019.
-//
+/*
+ * Subject: CMPE 135            Professor Ron Mak
+ * Assignment 3: Command Line RPS Game
+ * contributors: Aamer Idris, Jacob Balster-Gee, Dan Hoang, Andre Voloshin
+ */
 
 #ifndef RPSGAME_STATS_H
 #define RPSGAME_STATS_H
@@ -25,6 +27,7 @@ private:
 public:
     Stats(): userWinPercentage(0.0), userLossPercentage(0.0), computerLossPercentage(0), computerWinPercentage(0){}
 
+    // player stats
     void printPlayerStats(User userPlayer, int rounds){
         userWinPercentage = ((float)userPlayer.getWins()/(float)rounds) * 100;
         userLossPercentage = ((float)userPlayer.getLosses()/(float)rounds) * 100;
@@ -33,6 +36,7 @@ public:
         cout<<userPlayer.getUsername()<<" Loss Percentage: "<<userLossPercentage<<"%"<<endl;
     }
 
+    // computer stats
     void printComputerStats(Computer player, int rounds){
         computerWinPercentage = ((float)player.getWins()/(float)rounds) * 100;
         computerLossPercentage = ((float)player.getLosses()/(float)rounds) * 100;
@@ -43,9 +47,20 @@ public:
 
 
     void printGameStats(User userPlayer, Computer computerPlayer, int rounds){
-        printPlayerStats(userPlayer, rounds);
-        printComputerStats(computerPlayer, rounds);
-        cout<<"Total Rounds Played: "<<rounds<<endl;
+        cout<<"-------------------------------Player Stats------------------------"<<endl;
+
+        //Calculation of game wins and losses percentage
+        userWinPercentage = ((float)userPlayer.getWins()/(float)rounds) * 100;
+        userLossPercentage = ((float)userPlayer.getLosses()/(float)rounds) * 100;
+        computerWinPercentage = ((float)computerPlayer.getWins()/(float)rounds) * 100;
+        computerLossPercentage = ((float)computerPlayer.getLosses()/(float)rounds) * 100;
+
+        // Print game stats
+        cout<<"Total Rounds Played: "<<rounds<<endl<<endl;
+        cout<<userPlayer.getUsername()<<" Stats: "<<endl;
+        cout<<"Rounds Won: "<<userPlayer.getWins()<<"\tWins Percentage: "<<userWinPercentage<<"%"<<endl;
+        cout<<"Rounds Lost: "<<userPlayer.getLosses()<<"\t Losses Percentage: "<<userLossPercentage<<"%"<<endl;
+        cout<<"Rounds Tied: "<<userPlayer.getTies()<<endl;
     }
 
     void winner(){
@@ -54,8 +69,11 @@ public:
         if(userWinPercentage > computerWinPercentage){
             cout<<"You Won!!!!"<<endl;
         }
+        else if(userWinPercentage == computerWinPercentage){
+            cout<<"The game is a Tie"<<endl;
+        }
         else{
-            cout<<"CPU Won!!!!"<<endl;
+            cout<<"CPU won the game"<<endl;
         }
     }
 

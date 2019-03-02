@@ -1,6 +1,8 @@
-//
-// Created by Amer on 2/22/2019.
-//
+/*
+ * Subject: CMPE 135            Professor Ron Mak
+ * Assignment 3: Command Line RPS Game
+ * contributors: Aamer Idris, Jacob Balster-Gee, Dan Hoang, Andre Voloshin
+ */
 
 #ifndef RPSGAME_PLAYER_H
 #define RPSGAME_PLAYER_H

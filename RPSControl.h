@@ -1,6 +1,8 @@
-//
-// Created by Amer on 2/22/2019.
-//
+/*
+ * Subject: CMPE 135            Professor Ron Mak
+ * Assignment 3: Command Line RPS Game
+ * contributors: Aamer Idris, Jacob Balster-Gee, Dan Hoang, Andre Voloshin
+ */
 
 #ifndef RPSGAME_RPSCONTROL_H
 #define RPSGAME_RPSCONTROL_H
@@ -9,6 +11,7 @@
 #include "Player.h"
 #include "Stats.h"
 #include "GameLogic.h"
+#include <stdlib.h>
 
 class RPSControl {
 
@@ -26,10 +29,11 @@ private:
 public:
     RPSControl(): user1(), cpu(){ };
 
+    // Game main logic
     void play(){
         showMenu();
         showRule();
-        system("Pause");
+        cin.ignore();
         selectRounds();
         int rounds = 1;
         while(rounds <= numOfRounds){
@@ -38,33 +42,37 @@ public:
             logic.getRoundOutcome(user1, cpu);
             rounds++;
         }
-        gameStats.printPlayerStats(user1, numOfRounds);
+        gameStats.printGameStats(user1, cpu, numOfRounds);
         gameStats.winner();
         endGameMessage();
     }
     int getRounds(){return numOfRounds;}
 
+    // prints game rules
     void showRule(){
-        cout<<"Before you start your game. Please review the game rule and press Enter to start the game..."<<endl<<endl;
+        cout<<endl<<"Before you start your game. Please review the game rules below:"<<endl;
         cout<<"1: Paper beats Rock"<<endl;
         cout<<"2: Rock beats Scissor"<<endl;
         cout<<"3: Scissor beats Paper"<<endl;
+        cout<<"Press Enter to start the game..."<<endl;
     }
 
     void setRounds(int rounds){
         numOfRounds = rounds;
     }
 
+
+    // function to read user and computer weapons
     void playTurns(){
 
         user1.playTurn();
         cpu.playTurn();
     }
 
+    //prints menu to user
     void showMenu(){
-        cout<<"welcome to the best RPS Game"<<endl;
         user1.setUsername();
-        cout<<"Hello, "<<user1.getUsername()<<endl;
+        cout<<endl<<"Hello, "<<user1.getUsername()<<". Welcome to the RPS Game."<<endl;
     }
 
     void selectRounds(){
