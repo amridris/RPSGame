@@ -139,9 +139,9 @@ public:
         }
 
         switch(highestValueIndex){
-            case 1: choice = weapons::ROCK; break;
-            case 2: choice = weapons::PAPER; break;
-            case 3: choice = weapons ::SCISSOR; break;
+            case 0: choice = weapons::ROCK; break;
+            case 1: choice = weapons::PAPER; break;
+            case 2: choice = weapons ::SCISSOR; break;
         }
 
         return choice;
