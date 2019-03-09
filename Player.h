@@ -44,6 +44,9 @@ public:
         return ties;
     }
 
+    weapons getUserWeapon(){
+        return playerWeapon.getWeapon();
+    }
 };
 
 

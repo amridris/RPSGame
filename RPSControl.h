@@ -12,6 +12,7 @@
 #include "Stats.h"
 #include "GameLogic.h"
 #include <stdlib.h>
+#include "MarkovAi.h"
 
 class RPSControl {
 
@@ -24,7 +25,7 @@ private:
     Computer cpu;
     Stats gameStats;
     GameLogic logic;
-
+    MarkovAi AI;
 
 public:
     RPSControl(): user1(), cpu(){ };
@@ -45,6 +46,8 @@ public:
         gameStats.printGameStats(user1, cpu, numOfRounds);
         gameStats.winner();
         endGameMessage();
+        cout<<"----------------------------------------Matrix of Player Moves---------------------------"<<endl;
+        AI.printMarkovTable();
     }
     int getRounds(){return numOfRounds;}
 
@@ -66,7 +69,17 @@ public:
     void playTurns(){
 
         user1.playTurn();
-        cpu.playTurn();
+        AI.readPlayerMove(user1);
+        AI.updateMatrix();
+        if(AI.getPrevPlayerMove() == weapons::UNKNOWN) {
+            //random choice
+            cpu.playTurn();
+        }
+        else{
+            // Intelligent computer choice
+            cpu.playerWeapon.setUserWeapon(AI.chooseWeapon());
+        }
+        AI.setPlayerPrevChoice();
     }
 
     //prints menu to user

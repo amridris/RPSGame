@@ -17,7 +17,8 @@ using namespace std;
 enum class weapons{
     ROCK = 0,
     PAPER = 1,                  // weapon enum declaration (0->2)
-    SCISSOR = 2
+    SCISSOR = 2,
+    UNKNOWN = 3
 };
 
 class Weapons {
@@ -67,6 +68,8 @@ public:
             break;
             case weapons::SCISSOR: weaponName = "SCISSOR";
             break;
+            case weapons::UNKNOWN: weaponName = "NULL";
+            break;
         }
 
         return weaponName;
@@ -79,6 +82,7 @@ public:
         cout << "2: PAPER" << endl;
         cout << "3: SCISSOR" << endl;
     }
+
 
 };
 
