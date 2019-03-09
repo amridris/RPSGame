@@ -66,13 +66,13 @@ public:
 
         cout<<endl<<"---------------------GAME WINNER-----------------------------"<<endl;
         if(userWinPercentage > computerWinPercentage){
-            cout<<"You Won!!!!"<<endl;
+            cout<<"You Won!!!!"<<endl<<endl;
         }
         else if(userWinPercentage == computerWinPercentage){
-            cout<<"The game is a Tie"<<endl;
+            cout<<"The game is Tied"<<endl<<endl;
         }
         else{
-            cout<<"CPU won the game"<<endl;
+            cout<<"CPU won the game"<<endl<<endl;
         }
     }
 

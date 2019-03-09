@@ -47,12 +47,31 @@ public:
 
     // for debugging purpose!
     void printMarkovTable(){
+        int index = 0;
+        bool firstTimeRock = true;
+        bool firstTimePaper = true;
+        bool firstTimeScissor= true;
+        cout<<"\tRock\tPaper\tScissor"<<endl;
+
         for(auto row = marcov_mat.begin(); row != marcov_mat.end(); row++){
+            if(index == 0 && firstTimeRock == true){
+                cout<<"Rock\t";
+                firstTimeRock = false;
+            }
+            else if(index == 1 && firstTimePaper == true){
+                cout<<"Paper\t";
+                firstTimePaper = false;
+            }
+            else if(index == 2 && firstTimeScissor == true){
+                cout<<"Scissor\t";
+                firstTimeScissor = false;
+            }
             for(auto col = row->begin(); col != row->end(); col++){
                 cout<<*col;
                 cout<<"\t";
             }
             cout<<endl;
+            index++;
         }
     }
 

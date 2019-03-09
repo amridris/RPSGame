@@ -43,11 +43,13 @@ public:
             logic.getRoundOutcome(user1, cpu);
             rounds++;
         }
+        cout<<endl;
         gameStats.printGameStats(user1, cpu, numOfRounds);
         gameStats.winner();
-        endGameMessage();
         cout<<"----------------------------------------Matrix of Player Moves---------------------------"<<endl;
         AI.printMarkovTable();
+        endGameMessage();
+
     }
     int getRounds(){return numOfRounds;}
 
@@ -57,7 +59,7 @@ public:
         cout<<"1: Paper beats Rock"<<endl;
         cout<<"2: Rock beats Scissor"<<endl;
         cout<<"3: Scissor beats Paper"<<endl;
-        cout<<"Press Enter to start the game..."<<endl;
+        cout<<endl<<"Press Enter to start the game..."<<endl;
     }
 
     void setRounds(int rounds){
