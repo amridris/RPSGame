@@ -7,13 +7,9 @@
 
 #include <iostream>
 #include "RPSControl.h"
-#include "MarkovAi.h"
 
-enum class color{
-    red = 0,
-    green = 1,
-    blue = 2
-};
+
+
 int main() {
 
     RPSControl game;
