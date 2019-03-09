@@ -1,6 +1,5 @@
 /*
  * Subject: CMPE 135            Professor Ron Mak
- * Assignment 3: Command Line RPS Game
  * contributors: Aamer Idris, Jacob Balster-Gee, Dan Hoang, Andre Voloshin
  */
 

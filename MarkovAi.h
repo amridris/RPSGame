@@ -1,6 +1,8 @@
-//
-// Created by Amer on 3/8/2019.
-//
+/*
+ * Subject: CMPE 135            Professor Ron Mak
+ * contributors: Aamer Idris, Jacob Balster-Gee, Dan Hoang, Andre Voloshin
+ */
+
 
 #ifndef RPSGAME_MARKOVAI_H
 #define RPSGAME_MARKOVAI_H
@@ -35,7 +37,7 @@ public:
         //set weapons value to unknown
         prevPlayerChoice = currentPlayerChoice = weapons::UNKNOWN;
 
-        // initialize the map variable
+        // initialize the map variable (used to increment the table)
         weaponInt.insert(make_pair(weapons::ROCK, 0));
         weaponInt.insert(make_pair(weapons::PAPER, 1));
         weaponInt.insert(make_pair(weapons::SCISSOR, 2));
@@ -97,7 +99,7 @@ public:
      * parameter: void
      *
      * chooseWeapon: for a current user weapon choice it traverse the table row and returns the highest value index
-     * as a weapon choice for the computer to chose (Markov 2 set probability)
+     * as a weapon choice for the computer to chose (Markov 2 state chain)
      *
      * returns:  an intelligent computer weapon choice
      */

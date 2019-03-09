@@ -1,8 +1,8 @@
 /*
  * Subject: CMPE 135            Professor Ron Mak
- * Assignment 3: Command Line RPS Game
  * contributors: Aamer Idris, Jacob Balster-Gee, Dan Hoang, Andre Voloshin
  */
+
 #ifndef RPSGAME_COMPUTER_H
 #define RPSGAME_COMPUTER_H
 #include "Player.h"
