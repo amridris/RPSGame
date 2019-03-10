@@ -17,7 +17,7 @@ class computerAI{
     using matrix = vector<vector<long long>>;
 private:
     matrix marcov_mat;
-    weapons last_user_choice;
+    weapons last_player_choice;
     weapons before_last_player_choice;
     map<weapons,long long> weaponInt;
     bool hard_diffculty = false;
@@ -37,7 +37,7 @@ public:
         }
 
         //set weapons value to unknown
-        last_user_choice = before_last_player_choice = weapons::UNKNOWN;
+        last_player_choice = before_last_player_choice = weapons::UNKNOWN;
 
         // initialize the map variable (used to increment the table)
         weaponInt.insert(make_pair(weapons::ROCK, 0));
@@ -92,7 +92,7 @@ public:
      */
     void updateMatrix(){
 
-            marcov_mat[weaponInt[last_user_choice]][weaponInt[before_last_player_choice]]++;
+            marcov_mat[weaponInt[before_last_player_choice]][weaponInt[last_player_choice]]++;
     }
 
     /*
@@ -109,7 +109,7 @@ public:
         long long highestValue = 0;
         weapons choice;
 
-        switch(before_last_player_choice){
+        switch(last_player_choice){
             case weapons::ROCK: {
                 for(int i = 0; i<marcov_mat[0].size(); i++){
                     if(highestValue < marcov_mat[0][i]){
@@ -193,23 +193,23 @@ public:
     void machineLearnedPlay(User &player, Computer &cpu){
 
         // Read past player choice
-        if(last_user_choice == weapons::UNKNOWN){
-            last_user_choice = player.getUserWeapon();
+        if(last_player_choice == weapons::UNKNOWN){
+            last_player_choice = player.getUserWeapon();
             cpu.playTurn();
         }
 
         // sets the previous play for (2 state markov reading)
         else if(before_last_player_choice == weapons::UNKNOWN){
-            before_last_player_choice = last_user_choice;
+            before_last_player_choice = last_player_choice;
             cpu.playTurn();
         }
         else{
             // assign the old user throw to before last
-            before_last_player_choice = last_user_choice;
+            before_last_player_choice = last_player_choice;
 
 
             // update the last play after the end of the round
-            last_user_choice = player.getUserWeapon();
+            last_player_choice = player.getUserWeapon();
 
             // update matrix
             updateMatrix();
