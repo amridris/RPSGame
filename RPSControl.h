@@ -12,7 +12,7 @@
 #include "Stats.h"
 #include "GameLogic.h"
 #include <stdlib.h>
-#include "MarkovAi.h"
+#include "computerAI.h"
 
 class RPSControl {
 
@@ -20,38 +20,43 @@ public:
     bool startGame;
 
 private:
-    int numOfRounds;
-    User user1;
+    int num_of_rounds;
+    User user;
     Computer cpu;
     Stats gameStats;
     GameLogic logic;
-    MarkovAi AI;
+    computerAI AI;
+    bool game_difficulty;
 
 public:
-    RPSControl(): user1(), cpu(){ };
+    RPSControl(bool difficulty): user(), cpu(), game_difficulty(difficulty){ };
 
     // Game main logic
     void play(){
         showMenu();
+        AI.setGameDifficulty(game_difficulty);
         showRule();
         cin.ignore();
         selectRounds();
         int rounds = 1;
-        while(rounds <= numOfRounds){
+        while(rounds <= num_of_rounds){
             cout<<"---------------------------Round "<<rounds<<" --------------------------------"<<endl;
             playTurns();
-            logic.getRoundOutcome(user1, cpu);
+            logic.getRoundOutcome(user, cpu);
             rounds++;
         }
         cout<<endl;
-        gameStats.printGameStats(user1, cpu, numOfRounds);
+        gameStats.printGameStats(user, cpu, num_of_rounds);
         gameStats.winner();
         cout<<"----------------------------------------Matrix of Player Moves---------------------------"<<endl;
         AI.printMarkovTable();
         endGameMessage();
+        AI.exportMatrix();
 
     }
-    int getRounds(){return numOfRounds;}
+
+
+    int getRounds(){return num_of_rounds;}
 
     // prints game rules
     void showRule(){
@@ -63,40 +68,30 @@ public:
     }
 
     void setRounds(int rounds){
-        numOfRounds = rounds;
+        num_of_rounds = rounds;
     }
 
 
     // function to read user and computer weapons
     void playTurns(){
 
-        user1.playTurn();
-        AI.readPlayerMove(user1);
-        AI.updateMatrix();
-        if(AI.getPrevPlayerMove() == weapons::UNKNOWN) {
-            //random choice
-            cpu.playTurn();
-        }
-        else{
-            // Intelligent computer choice
-            cpu.playerWeapon.setUserWeapon(AI.chooseWeapon());
-        }
-        AI.setPlayerPrevChoice();
+        user.playTurn();
+        AI.play(user, cpu);
     }
 
     //prints menu to user
     void showMenu(){
-        user1.setUsername();
-        cout<<endl<<"Hello, "<<user1.getUsername()<<". Welcome to the RPS Game."<<endl;
+        user.setUsername();
+        cout<<endl<<"Hello, "<<user.getUsername()<<". Welcome to the RPS Game."<<endl;
     }
 
     void selectRounds(){
         cout<<"Please enter the number of rounds you want to play"<<endl;
-        cin>>this->numOfRounds;
+        cin>>this->num_of_rounds;
     }
 
     void endGameMessage(){
-        cout<<endl<<"Thank you "<<this->user1.getUsername()<<" for playing the game. GoodBye!!"<<endl;
+        cout<<endl<<"Thank you "<<this->user.getUsername()<<" for playing the game. GoodBye!!"<<endl;
     }
 };
 

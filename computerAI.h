@@ -11,17 +11,19 @@
 #include "Weapons.h"
 #include "Player.h"
 #include <map>
+#include <fstream>
 
-class MarkovAi{
+class computerAI{
     using matrix = vector<vector<long long>>;
 private:
     matrix marcov_mat;
-    weapons prevPlayerChoice;
-    weapons currentPlayerChoice;
+    weapons last_user_choice;
+    weapons before_last_player_choice;
     map<weapons,long long> weaponInt;
+    bool hard_diffculty = false;
 
 public:
-    MarkovAi(){
+    computerAI(){
 
         //set the size of the matrix
         marcov_mat.resize(3, vector<long long>(3));
@@ -35,7 +37,7 @@ public:
         }
 
         //set weapons value to unknown
-        prevPlayerChoice = currentPlayerChoice = weapons::UNKNOWN;
+        last_user_choice = before_last_player_choice = weapons::UNKNOWN;
 
         // initialize the map variable (used to increment the table)
         weaponInt.insert(make_pair(weapons::ROCK, 0));
@@ -76,20 +78,7 @@ public:
     }
 
 
-    // read in player weapon choice
-    void readPlayerMove(User player){
-        currentPlayerChoice = player.getUserWeapon();
-    }
 
-    //Once the new player choice is made. Set the previous player choice
-    void setPlayerPrevChoice(){
-        prevPlayerChoice = currentPlayerChoice;
-    }
-
-    //Returns previous player choice
-    weapons getPrevPlayerMove(){
-        return prevPlayerChoice;
-    }
 
     /*
      * Update the matrix entires for computer to make an intelligent plays
@@ -102,16 +91,8 @@ public:
      * increment the values depending on the user prev and current play choice!!
      */
     void updateMatrix(){
-        if(prevPlayerChoice == weapons::UNKNOWN){
-            return;
-        }
-        else if(currentPlayerChoice == weapons::UNKNOWN){
-            return;
-        }
-        else{
-            marcov_mat[weaponInt[prevPlayerChoice]][weaponInt[currentPlayerChoice]]++;
-        }
 
+            marcov_mat[weaponInt[last_user_choice]][weaponInt[before_last_player_choice]]++;
     }
 
     /*
@@ -128,7 +109,7 @@ public:
         long long highestValue = 0;
         weapons choice;
 
-        switch(currentPlayerChoice){
+        switch(before_last_player_choice){
             case weapons::ROCK: {
                 for(int i = 0; i<marcov_mat[0].size(); i++){
                     if(highestValue < marcov_mat[0][i]){
@@ -165,6 +146,103 @@ public:
 
         return choice;
     }
+
+
+    /*
+     * Set the game diffculty level
+     * Parameter: bool
+     * return: void
+     */
+
+    void setGameDifficulty(bool game_diffuclty){
+        this->hard_diffculty = game_diffuclty;
+    }
+
+
+    /*
+     * Game play function which checks the diffculty level and play accordingly.
+     * In randomized mode: The computer plays randomly
+     * In Machine Learning AI mode: The computer reads the user past play and create a matrix. The matrix will be used
+     * to find pattern to play.
+     */
+
+    void play(User &player, Computer &cpu){
+        if(hard_diffculty == false){
+            randomizedPlay(cpu);
+        }
+        else{
+            machineLearnedPlay(player, cpu);
+        }
+    }
+
+    /*
+     * Function to play randomized game (Easy setting)
+     * Parameter: cpu
+     * returns: void
+     */
+    void randomizedPlay(Computer &cpu){
+        cpu.playTurn();
+    }
+
+
+    /*
+     * Function to play intelligently using learned patter from matrix (Markov Chain).
+     * parameter: user and cpu players
+     * returns: void
+     */
+    void machineLearnedPlay(User &player, Computer &cpu){
+
+        // Read past player choice
+        if(last_user_choice == weapons::UNKNOWN){
+            last_user_choice = player.getUserWeapon();
+            cpu.playTurn();
+        }
+
+        // sets the previous play for (2 state markov reading)
+        else if(before_last_player_choice == weapons::UNKNOWN){
+            before_last_player_choice = last_user_choice;
+            cpu.playTurn();
+        }
+        else{
+            // assign the old user throw to before last
+            before_last_player_choice = last_user_choice;
+
+
+            // update the last play after the end of the round
+            last_user_choice = player.getUserWeapon();
+
+            // update matrix
+            updateMatrix();
+            // Play the game by checking the matrix
+            cpu.playerWeapon.setUserWeapon(chooseWeapon());
+
+        }
+    }
+
+
+    /*
+     * function to export AI matrix to file to enhance computer choices and for reuse.
+     * parameter: void
+     * returns: void
+     */
+    void exportMatrix(){
+        ofstream exportFile;
+
+        exportFile.open("matrix.csv");
+        for(auto row = marcov_mat.begin(); row != marcov_mat.end(); row++){
+            for(auto col = row->begin(); col != row->end(); col++){
+                exportFile<<*col;
+                exportFile<<"\t";
+            }
+
+            exportFile<<endl;
+        }
+
+        exportFile.close();
+
+    }
+
+
 
 };
 #endif //RPSGAME_MARKOVAI_H
