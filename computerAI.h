@@ -139,9 +139,9 @@ public:
         }
 
         switch(highestValueIndex){
-            case 0: choice = weapons::ROCK; break;
-            case 1: choice = weapons::PAPER; break;
-            case 2: choice = weapons ::SCISSOR; break;
+            case 0: choice = weapons::PAPER; break;
+            case 1: choice = weapons::SCISSOR; break;
+            case 2: choice = weapons ::ROCK; break;
         }
 
         return choice;
@@ -192,7 +192,7 @@ public:
      */
     void machineLearnedPlay(User &player, Computer &cpu){
 
-        // Read past player choice
+        // Read past player choice and computer play randomly
         if(last_player_choice == weapons::UNKNOWN){
             last_player_choice = player.getUserWeapon();
             cpu.playTurn();
@@ -201,21 +201,21 @@ public:
         // sets the previous play for (2 state markov reading)
         else if(before_last_player_choice == weapons::UNKNOWN){
             before_last_player_choice = last_player_choice;
+            last_player_choice = player.getUserWeapon();
             cpu.playTurn();
         }
         else{
+
+            updateMatrix();
+
             // assign the old user throw to before last
             before_last_player_choice = last_player_choice;
 
-
-            // update the last play after the end of the round
-            last_player_choice = player.getUserWeapon();
-
-            // update matrix
-            updateMatrix();
             // Play the game by checking the matrix
             cpu.playerWeapon.setUserWeapon(chooseWeapon());
 
+            // update the last play after the end of the round
+            last_player_choice = player.getUserWeapon();
         }
     }
 

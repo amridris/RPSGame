@@ -51,7 +51,9 @@ public:
         cout<<"----------------------------------------Matrix of Player Moves---------------------------"<<endl;
         AI.printMarkovTable();
         endGameMessage();
-        AI.exportMatrix();
+        if(game_difficulty == true)
+            AI.exportMatrix();
+
 
     }
 
