@@ -12,6 +12,7 @@
 #include "Player.h"
 #include <map>
 #include <fstream>
+#include <sstream>
 
 class computerAI{
     using matrix = vector<vector<long long>>;
@@ -28,12 +29,17 @@ public:
         //set the size of the matrix
         marcov_mat.resize(3, vector<long long>(3));
 
+        //open matrix.csv file
+        ifstream read_matrix("matrix.csv");
 
-        //set the table entries to be all 0
-        for(auto row = marcov_mat.begin(); row != marcov_mat.end(); row++){
-            for(auto col = row->begin(); col != row->end(); col++){
-                *col = 0;
-            }
+        // if file exits read its content
+        if(read_matrix.is_open()){
+            readMatrixTable(read_matrix);
+
+        }
+        // create a new file
+        else {
+            createNewMatrix();
         }
 
         //set weapons value to unknown
@@ -44,6 +50,33 @@ public:
         weaponInt.insert(make_pair(weapons::PAPER, 1));
         weaponInt.insert(make_pair(weapons::SCISSOR, 2));
 
+    }
+
+    //If no file found create a new matrix (initialized to zeros)
+    void createNewMatrix() {//set the table entries to be all 0
+        for (auto row = marcov_mat.begin(); row != marcov_mat.end(); row++) {
+                for (auto col = row->begin(); col != row->end(); col++) {
+                    *col = 0;
+                }
+            }
+    }
+
+    // read previously created matrix file
+    void readMatrixTable(ifstream &read_matrix)  {
+        string matrix_line;
+        char delimiter;
+        int temporary_int;
+        int row = 0, col = 0;
+
+        while(getline(read_matrix, matrix_line)){
+                stringstream iss(matrix_line);
+                while(iss>>temporary_int){
+                    marcov_mat[row][col] = temporary_int;
+                    col++;
+                }
+                row++;
+                col = 0;
+            }
     }
 
 
