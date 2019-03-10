@@ -40,7 +40,7 @@ public:
         selectRounds();
         int rounds = 1;
         while(rounds <= num_of_rounds){
-            cout<<"---------------------------Round "<<rounds<<" --------------------------------"<<endl;
+            cout<<"\n---------------------------Round "<<rounds<<" --------------------------------"<<endl;
             playTurns();
             logic.getRoundOutcome(user, cpu);
             rounds++;
@@ -48,12 +48,15 @@ public:
         cout<<endl;
         gameStats.printGameStats(user, cpu, num_of_rounds);
         gameStats.winner();
-        cout<<"----------------------------------------Matrix of Player Moves---------------------------"<<endl;
-        AI.printMarkovTable();
-        endGameMessage();
-        if(game_difficulty == true)
+        
+        //prints the matrix only if the game is not random
+        if (game_difficulty)
+        {
+            cout<<"---------------------- Matrix of Player Moves ----------------------"<<endl;
+            AI.printMarkovTable();
+            endGameMessage();
             AI.exportMatrix();
-
+        }
 
     }
 
