@@ -9,7 +9,6 @@
 
 #include "RPSControl.h"
 
-
 class GameLogic {
 
 public:
@@ -18,7 +17,29 @@ public:
 
         // check player and computer weapons and pick winner
 
+        if(user.playerWeapon.getWeapon() == computer.playerWeapon.getWeapon())
+    	{
+    		user.setTies();
+    		computer.setTies();
+    		cout<< user.getUsername()<<" "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": TIE"<<endl;
+    	}
 
+    	else if ((user.playerWeapon.getWeapon() == weapons::ROCK && computer.playerWeapon.getWeapon() == weapons::PAPER)
+    			|| (user.playerWeapon.getWeapon() == weapons::PAPER && computer.playerWeapon.getWeapon() == weapons::SCISSOR)
+				|| (user.playerWeapon.getWeapon() == weapons::SCISSOR && computer.playerWeapon.getWeapon() == weapons::ROCK))
+    	{
+    		user.setLosses();
+    		computer.setWins();
+    		cout<< user.getUsername()<<" "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": CPU WINS"<<endl;
+    	}
+    	else
+    	{
+            user.setWins();
+            computer.setLosses();
+            cout<< user.getUsername()<<" "<<user.playerWeapon.to_string()<<" vs "<<"CPU "<<computer.playerWeapon.to_string()<<": "<<user.getUsername()<<" WINS"<<endl;
+    	}
+        
+/*
         if (user.playerWeapon.getWeapon() == weapons::ROCK){
             if(computer.playerWeapon.getWeapon() == weapons::ROCK){
                 user.setTies();
@@ -81,6 +102,7 @@ public:
 
             }
         }
+*/
     }
 
 };
