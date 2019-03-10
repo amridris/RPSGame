@@ -56,7 +56,7 @@ public:
 
         // Print game stats
         cout<<"Total Rounds Played: "<<rounds<<endl<<endl;
-        cout<<userPlayer.getUsername()<<" Stats: "<<endl;
+        cout<<userPlayer.getUsername()<<"'s Stats: "<<endl;
         cout<<"Rounds Won: "<<userPlayer.getWins()<<"\tWins Percentage: "<<userWinPercentage<<"%"<<endl;
         cout<<"Rounds Lost: "<<userPlayer.getLosses()<<"\t Losses Percentage: "<<userLossPercentage<<"%"<<endl;
         cout<<"Rounds Tied: "<<userPlayer.getTies()<<endl;
