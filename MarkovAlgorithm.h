@@ -9,12 +9,16 @@
 
 #include<vector>
 #include "Weapons.h"
-#include "Player.h"
+#include "computer.h"
+#include "User.h"
 #include <map>
 #include <fstream>
 #include <sstream>
 
-class computerAI{
+
+
+
+class MarkovAlgorithm{
     using matrix = vector<vector<long long>>;
 private:
     matrix marcov_mat;
@@ -24,7 +28,7 @@ private:
     bool hard_diffculty = false;
 
 public:
-    computerAI(){
+    MarkovAlgorithm(){
 
         //set the size of the matrix
         marcov_mat.resize(3, vector<long long>(3));
@@ -35,7 +39,6 @@ public:
         // if file exits read its content
         if(read_matrix.is_open()){
             readMatrixTable(read_matrix);
-
         }
         // create a new file
         else {
@@ -200,23 +203,9 @@ public:
      */
 
     void play(User &player, Computer &cpu){
-        if(hard_diffculty == false){
-            randomizedPlay(cpu);
-        }
-        else{
-            machineLearnedPlay(player, cpu);
-        }
-    }
 
-    /*
-     * Function to play randomized game (Easy setting)
-     * Parameter: cpu
-     * returns: void
-     */
-    void randomizedPlay(Computer &cpu){
-        cpu.playTurn();
+        machineLearnedPlay(player, cpu);
     }
-
 
     /*
      * Function to play intelligently using learned patter from matrix (Markov Chain).

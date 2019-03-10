@@ -6,13 +6,15 @@
 #ifndef RPSGAME_COMPUTER_H
 #define RPSGAME_COMPUTER_H
 #include "Player.h"
+#include "chooseAI.h"
+
 using namespace std;
 
 
 class Computer: public Player {
 public:
-    Computer(){};
 
+    Computer(){};
 
     void playTurn(){
 

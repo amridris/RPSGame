@@ -12,8 +12,7 @@
 #include "Stats.h"
 #include "GameLogic.h"
 #include <stdlib.h>
-#include "computerAI.h"
-
+#include "factoryChooseAI.h"
 class RPSControl {
 
 public:
@@ -25,7 +24,7 @@ private:
     Computer cpu;
     Stats gameStats;
     GameLogic logic;
-    computerAI AI;
+    factoryChooseAI createAI;
     bool game_difficulty;
 
 public:
@@ -34,14 +33,14 @@ public:
     // Game main logic
     void play(){
         showMenu();
-        AI.setGameDifficulty(game_difficulty);
+        auto AI = createAI.choose_AI_algorithm(game_difficulty);
         showRule();
         cin.ignore();
         selectRounds();
         int rounds = 1;
         while(rounds <= num_of_rounds){
             cout<<"\n---------------------------Round "<<rounds<<" --------------------------------"<<endl;
-            playTurns();
+            playTurns(AI);
             logic.getRoundOutcome(user, cpu);
             rounds++;
         }
@@ -53,9 +52,9 @@ public:
         if (game_difficulty)
         {
             cout<<"---------------------- Matrix of Player Moves ----------------------"<<endl;
-            AI.printMarkovTable();
+            AI->printMarkovMatrix();
             endGameMessage();
-            AI.exportMatrix();
+            AI->exportMarkovMatrix();
         }
 
     }
@@ -78,10 +77,10 @@ public:
 
 
     // function to read user and computer weapons
-    void playTurns(){
+    void playTurns(chooseAI *AI){
 
         user.playTurn();
-        AI.play(user, cpu);
+        AI->play(user, cpu);
     }
 
     //prints menu to user
