@@ -1,0 +1,193 @@
+Please enter your name?
+Benedict
+
+Hello, Benedict. Welcome to the RPS Game.
+
+Before you start your game. Please review the game rules below:
+1: Paper beats Rock
+2: Rock beats Scissor
+3: Scissor beats Paper
+
+Press Enter to start the game...
+
+Please enter the number of rounds you want to play
+20
+
+---------------------------Round 1 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+1
+Benedict ROCK vs CPU ROCK: TIE
+
+---------------------------Round 2 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+3
+Benedict SCISSOR vs CPU PAPER: Benedict WINS
+
+---------------------------Round 3 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+2
+Benedict PAPER vs CPU SCISSOR: CPU WINS
+
+---------------------------Round 4 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+1
+Benedict ROCK vs CPU PAPER: CPU WINS
+
+---------------------------Round 5 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+3
+Benedict SCISSOR vs CPU PAPER: Benedict WINS
+
+---------------------------Round 6 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+2
+Benedict PAPER vs CPU SCISSOR: CPU WINS
+
+---------------------------Round 7 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+1
+Benedict ROCK vs CPU PAPER: CPU WINS
+
+---------------------------Round 8 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+3
+Benedict SCISSOR vs CPU ROCK: CPU WINS
+
+---------------------------Round 9 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+2
+Benedict PAPER vs CPU SCISSOR: CPU WINS
+
+---------------------------Round 10 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+2
+Benedict PAPER vs CPU PAPER: TIE
+
+---------------------------Round 11 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+3
+Benedict SCISSOR vs CPU PAPER: Benedict WINS
+
+---------------------------Round 12 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+1
+Benedict ROCK vs CPU SCISSOR: Benedict WINS
+
+---------------------------Round 13 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+2
+Benedict PAPER vs CPU ROCK: Benedict WINS
+
+---------------------------Round 14 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+1
+Benedict ROCK vs CPU PAPER: CPU WINS
+
+---------------------------Round 15 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+1
+Benedict ROCK vs CPU ROCK: TIE
+
+---------------------------Round 16 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+3
+Benedict SCISSOR vs CPU ROCK: CPU WINS
+
+---------------------------Round 17 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+2
+Benedict PAPER vs CPU SCISSOR: CPU WINS
+
+---------------------------Round 18 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+1
+Benedict ROCK vs CPU PAPER: CPU WINS
+
+---------------------------Round 19 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+3
+Benedict SCISSOR vs CPU ROCK: CPU WINS
+
+---------------------------Round 20 --------------------------------
+Choose your weapon:
+1: ROCK
+2: PAPER
+3: SCISSOR
+2
+Benedict PAPER vs CPU SCISSOR: CPU WINS
+
+--------------------------- Player Stats ---------------------------
+Total Rounds Played: 20
+
+Benedict's Stats: 
+Rounds Won: 5	Wins Percentage: 25%
+Rounds Lost: 12	 Losses Percentage: 60%
+Rounds Tied: 3
+
+--------------------------- GAME WINNER ----------------------------
+CPU won the game
+
+---------------------- Matrix of Player Moves ----------------------
+	Rock	Paper	Scissor
+Rock	9	4	12	
+Paper	12	1	3	
+Scissor	3	11	5	
+
+Thank you Benedict for playing the game. GoodBye!!

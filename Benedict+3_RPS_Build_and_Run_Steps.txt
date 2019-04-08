@@ -1,0 +1,13 @@
+Building and running the Rock-Paper-Scissors Game:
+
+1.Using a C++ IDE, such as Eclipse, create a new project
+
+2.Import the .h and .cpp files to the sources folder
+
+3.Then use the IDE to build the program
+
+4.To run the program with the default (random) mode, just run the main.cpp file
+
+5.To run the program in the Machine Learning mode, apply a "-m" to the arguments panel when choosing the run configuration
+
+5a.Alternativly to Step 4, applying the argument "-r" in the run configurations will also run the program in random mode. 
